@@ -88,7 +88,10 @@ function AlphabeticScrollBar (props) {
         >
             {
                 ALPHABET.map((letter) => (
-                    <View key={letter}>
+                    <View
+                        key={letter}
+                        style={[props.sidebarLetterContainerStyle]}
+                    >
                         <Text
                             style={[{ fontSize: ResponsiveFontSize(1.6) }, props.sidebarLetterStyle]}
                         >
@@ -105,12 +108,8 @@ AlphabeticScrollBar.propTypes = {
     onScroll: PropTypes.func,
     onScrollEnds: PropTypes.func,
     sidebarContainerStyles: PropTypes.object,
+    sidebarLetterContainerStyle: PropTypes.object,
     sidebarLetterStyle: PropTypes.object,
-}
-
-AlphabeticScrollBar.propTypes = {
-    onScroll: () => {},
-    onScrollEnds: () => {},
 }
 
 export default AlphabeticScrollBar

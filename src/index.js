@@ -46,11 +46,15 @@ export default function AlphaScrollFlatList (props) {
             <FlatList
                 {...props}
                 ref={flatListRef}
+                style={[props.listStyle]}
             />
 
             <Sidebar
                 onScroll={debounce(onScroll)}
                 onScrollEnds={debounce(onScrollEnds)}
+                sidebarContainerStyle={props.sidebarContainerStyle}
+                sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
+                sidebarLetterStyle={props.sidebarLetterStyle}
             />
         </View>
     )
@@ -60,7 +64,9 @@ AlphaScrollFlatList.propTypes = {
     data: PropTypes.array,
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
-    sidebarContainerStyles: PropTypes.object,
+    listStyle: PropTypes.object,
+    sidebarContainerStyle: PropTypes.object,
+    sidebarLetterContainerStyle: PropTypes.object,
     sidebarLetterStyle: PropTypes.object,
 }
 

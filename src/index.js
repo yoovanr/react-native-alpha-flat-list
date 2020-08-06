@@ -6,7 +6,7 @@ import debounce from 'lodash.debounce'
 
 import Sidebar from './components/Sidebar'
 
-export default function AlphaScrollFlatList (props) {
+export default function AlphaFlatList (props) {
     const [activeLetter, setActiveLetter] = useState(0)
     const [activeLetterViewTop, setActiveLetterViewTop] = useState(undefined)
 
@@ -60,7 +60,7 @@ export default function AlphaScrollFlatList (props) {
     )
 }
 
-AlphaScrollFlatList.propTypes = {
+AlphaFlatList.propTypes = {
     data: PropTypes.array,
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
@@ -70,7 +70,7 @@ AlphaScrollFlatList.propTypes = {
     sidebarLetterStyle: PropTypes.object,
 }
 
-AlphaScrollFlatList.defaultProps = {
+AlphaFlatList.defaultProps = {
     scrollKey: 'name',
     itemHeight: 20,
 }

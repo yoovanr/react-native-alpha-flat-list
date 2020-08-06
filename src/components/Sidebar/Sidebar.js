@@ -10,7 +10,7 @@ import styles from './Sidebar.styles'
 
 const ALPHABET = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-function AlphabeticScrollBar ({ onScroll, onScrollEnds }) {
+function AlphabeticScrollBar (props) {
     const alphabetContainerRef = useRef()
 
     const [activeLetter, setActiveLetter] = useState(undefined)
@@ -59,13 +59,13 @@ function AlphabeticScrollBar ({ onScroll, onScrollEnds }) {
     function onTouchLetter (letter) {
         setActiveLetter(letter)
         
-        onScroll(letter, activeLetterViewTop)
+        props.onScroll(letter, activeLetterViewTop)
     }
 
     function onPanResponderTerminate () {
         setActiveLetter(undefined)
 
-        onScrollEnds()
+        props.onScrollEnds()
     }
 
     function onLayout () {
@@ -84,15 +84,13 @@ function AlphabeticScrollBar ({ onScroll, onScrollEnds }) {
             ref={alphabetContainerRef}
             {...panResponder.panHandlers}
             onLayout={onLayout}
-            style={[styles.container]}
+            style={[styles.container, props.sidebarContainerStyle]}
         >
             {
                 ALPHABET.map((letter) => (
                     <View key={letter}>
                         <Text
-                            style={{
-                                fontSize: ResponsiveFontSize(1.6), 
-                            }}
+                            style={[{ fontSize: ResponsiveFontSize(1.6) }, props.sidebarLetterStyle]}
                         >
                             {letter}
                         </Text>
@@ -106,17 +104,13 @@ function AlphabeticScrollBar ({ onScroll, onScrollEnds }) {
 AlphabeticScrollBar.propTypes = {
     onScroll: PropTypes.func,
     onScrollEnds: PropTypes.func,
-    activeColor: PropTypes.string,
-    reverse: PropTypes.bool,
-    isPortrait: PropTypes.bool,
-    fontColor: PropTypes.string,
-    fontSizeMultiplier: PropTypes.number,
-    scrollBarContainerStyle: PropTypes.object
-};
+    sidebarContainerStyles: PropTypes.object,
+    sidebarLetterStyle: PropTypes.object,
+}
 
 AlphabeticScrollBar.propTypes = {
     onScroll: () => {},
-    onScrollEnds: () => {}
-};
+    onScrollEnds: () => {},
+}
 
-export default AlphabeticScrollBar;
+export default AlphabeticScrollBar

@@ -57,27 +57,14 @@ export default function AlphaScrollFlatList (props) {
 }
 
 AlphaScrollFlatList.propTypes = {
-    hideSideBar: PropTypes.bool,
-    scrollKey: PropTypes.string,
-    reverse: PropTypes.bool,
-    itemHeight: PropTypes.number,
     data: PropTypes.array,
-    activeColor: PropTypes.string,
-    scrollBarColor: PropTypes.string,
-    scrollBarFontSizeMultiplier: PropTypes.number,
-    onScrollEnds: PropTypes.func,
-    onScrollStarts: PropTypes.func,
-    scrollBarContainerStyle: PropTypes.object
-};
+    scrollKey: PropTypes.string,
+    itemHeight: PropTypes.number,
+    sidebarContainerStyles: PropTypes.object,
+    sidebarLetterStyle: PropTypes.object,
+}
 
 AlphaScrollFlatList.defaultProps = {
-    hideSideBar: false,
     scrollKey: 'name',
-    activeColor: '#52bad5',
-    reverse: false,
     itemHeight: 20,
-    scrollBarFontSizeMultiplier: 1,
-    onScrollEnds: () => { },
-    onScrollStarts: () => { },
-    scrollBarContainerStyle: { }
-};
+}

@@ -107,7 +107,7 @@ function AlphabeticScrollBar (props) {
 AlphabeticScrollBar.propTypes = {
     onScroll: PropTypes.func,
     onScrollEnds: PropTypes.func,
-    sidebarContainerStyles: PropTypes.object,
+    sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,
     sidebarLetterStyle: PropTypes.object,
 }

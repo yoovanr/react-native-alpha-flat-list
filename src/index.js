@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { FlatList, View, Dimensions } from 'react-native';
-import debounce from 'lodash.debounce';
+import React, { useRef, useState } from 'react'
+import { FlatList, View } from 'react-native'
 
-import Sidebar from './components/Sidebar';
+import PropTypes from 'prop-types'
+import debounce from 'lodash.debounce'
+
+import Sidebar from './components/Sidebar'
 
 export default function AlphaScrollFlatList (props) {
     const [activeLetter, setActiveLetter] = useState(0)

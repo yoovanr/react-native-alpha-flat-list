@@ -1,39 +1,46 @@
 {
-  "name": "react-native-alpha-flat-list",
-  "version": "0.0.1",
-  "private": false,
-  "author": "yoovanr",
-  "keywords": [
-    "react-native",
-    "react",
-    "flat-list",
-    "flatlist",
-    "list",
-    "alphabetic",
-    "scroll"
-  ],
-  "license": "MIT",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/yoovanr/react-native-alpha-flat-list.git"
-  },
-  "bugs": {
-    "url": "https://github.com/yoovanr/react-native-alpha-flat-list/issues"
-  },
-  "dependencies": {
-    "lodash.debounce": "^4.0.8",
-    "prop-types": "^15.5.10",
-    "react-native-responsive-fontsize": "0.1.2"
-  },
-  "peerDependencies": {
-    "react": "^16.0.0-alpha.12",
-    "react-native": "^0.44.0"
-  },
-  "devDependencies": {
-    "metro-react-native-babel-preset": "^0.61.0"
-  }
+    "name": "react-native-alpha-flat-list",
+    "version": "1.0.0",
+    "description": "A simple and fully customizable React Native component that implements Alphabetical List",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yoovanr/react-native-alpha-flat-list.git"
+    },
+    "keywords": [
+        "react-native",
+        "react-component",
+        "react-native-component",
+        "react",
+        "react native",
+        "mobile",
+        "ios",
+        "android",
+        "alphabetical",
+        "alphabet",
+        "list",
+        "flat-list",
+        "flat list"
+    ],
+    "author": "yoovanr",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/yoovanr/react-native-alpha-flat-list/issues"
+    },
+    "homepage": "https://github.com/yoovanr/react-native-alpha-flat-list",
+    "dependencies": {
+        "lodash.debounce": "^4.0.8",
+        "prop-types": "^15.5.10",
+        "react-native-responsive-fontsize": "0.1.2"
+    },
+    "peerDependencies": {
+        "react": "^16.0.0-alpha.12",
+        "react-native": "^0.44.0"
+    },
+    "devDependencies": {
+        "metro-react-native-babel-preset": "^0.61.0"
+    }
 }

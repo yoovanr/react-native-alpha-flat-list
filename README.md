@@ -1,5 +1,10 @@
 # React Native Alpha Flat List
 
+[![Build Status][build-badge]][build]
+[![Version][version-badge]][package]
+[![MIT License][license-badge]][license]
+[![Lean Core Badge][lean-core-badge]][lean-core-issue]
+
 A simple and fully customizable React Native component that implements Alphabetical List
 
 ## Getting Started
@@ -24,7 +29,7 @@ import { View, Text } from 'react-native'
 
 import AlphaFlatList from 'react-native-alpha-flat-list'
 
-const ITEM_HEIGHT = 50
+const ITEM_HEIGHT = 250
 
 const items = [
     {
@@ -92,8 +97,8 @@ const items = [
 const data = items.sort((previous, next) => previous.name.localeCompare(next.name))
 
 export default function App () {
-    const renderItem = ({ item} ) => (
-        <View>
+    const renderItem = ({ item }) => (
+        <View style={{ height: ITEM_HEIGHT }}>
             <Text>{item.name}</Text>
             <Text>{item.company}</Text>
         </View>
@@ -102,7 +107,7 @@ export default function App () {
     const keyExtractor = ({ id }) => id
 
     return (
-        <View style={styles.container}>
+        <View style={{ flex: 1 }}>
             <AlphaFlatList
                 data={data}
                 keyExtractor={keyExtractor}

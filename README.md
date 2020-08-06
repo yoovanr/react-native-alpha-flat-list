@@ -1,10 +1,5 @@
 # React Native Alpha Flat List
 
-[![Build Status][build-badge]][build]
-[![Version][version-badge]][package]
-[![MIT License][license-badge]][license]
-[![Lean Core Badge][lean-core-badge]][lean-core-issue]
-
 A simple and fully customizable React Native component that implements Alphabetical List
 
 ## Getting Started

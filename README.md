@@ -85,57 +85,9 @@ const items = [
         'name': 'Rasmussen Berry',
         'company': 'PHOLIO',
     },
-    {
-        'id': '5b588d4a8d264a917c4c2bb1',
-        'name': 'Tracy Tyson',
-        'company': 'PETIGEMS',
-    },
-    {
-        'id': '5b588d4a7046d0e0404efb64',
-        'name': 'Alexandria Boyer',
-        'company': 'EXOSWITCH'
-    },
-    {
-        'id': '5b588d4a3a35e8a4586732f5',
-        'name': 'Frost Palmer',
-        'company': 'QUANTASIS'
-    },
-    {
-        'id': '5b588d4af18b5e4f04105423',
-        'name': 'Woodard Savage',
-        'company': 'MANGLO',
-    },
-    {
-        'id': '5b588d4a6743a9a785da564e',
-        'name': 'Johns Glover',
-        'company': 'ZOLAR',
-    },
-    {
-        'id': '5b588d4a4f61b85368658822',
-        'name': 'Cortez Randall',
-        'company': 'IMMUNICS',
-    },
-    {
-        'id': '5b588d4aa4070ca7f1c93d85',
-        'name': 'Prince Bailey',
-        'company': 'UNCORP',
-    },
-    {
-        'id': '5b588d4aab36ef57e848671a',
-        'name': 'Bobbi Reese',
-        'company': 'VIAGREAT',
-    },
-    {
-        'id': '5b588d4a70ac9fe8fe892d37',
-        'name': 'Gillespie Lloyd',
-        'company': 'DIGIFAD',
-    },
-    {
-        'id': '5b588d4a0d53be71e881e1a2',
-        'name': 'Carole Suarez',
-        'company': 'FOSSIEL',
-    },
 ]
+
+const data = items.sort((previous, next) => previous.name.localeCompare(next.name))
 
 export default function App () {
     const renderItem = ({ item} ) => (
@@ -150,7 +102,7 @@ export default function App () {
     return (
         <View style={styles.container}>
             <AlphaFlatList
-                data={items.sort((previous, next) => previous.name.localeCompare(next.name))}
+                data={data}
                 keyExtractor={keyExtractor}
                 renderItem={renderItem}
                 itemHeight={ITEM_HEIGHT}

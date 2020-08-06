@@ -25,12 +25,15 @@
     "url": "https://github.com/yoovanr/react-native-alpha-flat-list/issues"
   },
   "dependencies": {
-    "lodash": "^4.16.6",
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.5.10",
     "react-native-responsive-fontsize": "0.1.2"
   },
   "peerDependencies": {
     "react": "^16.0.0-alpha.12",
     "react-native": "^0.44.0"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.61.0"
   }
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { View, Text, PanResponder } from 'react-native'
 
 import PropTypes from 'prop-types';
-import debounce from 'lodash/debounce'
+import debounce from 'lodash.debounce'
 
 import ResponsiveFontSize from 'react-native-responsive-fontsize'
 

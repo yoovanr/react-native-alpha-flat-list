@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, View, Dimensions } from 'react-native';
-import debounce from 'lodash/debounce';
+import debounce from 'lodash.debounce';
 
 import Sidebar from './components/Sidebar';
 

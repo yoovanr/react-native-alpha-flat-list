@@ -1,0 +1,122 @@
+import React, { useState, useRef } from 'react'
+import { View, Text, PanResponder } from 'react-native'
+
+import PropTypes from 'prop-types';
+import debounce from 'lodash/debounce'
+
+import ResponsiveFontSize from 'react-native-responsive-fontsize'
+
+import styles from './Sidebar.styles'
+
+const ALPHABET = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+function AlphabeticScrollBar ({ onScroll, onScrollEnds }) {
+    const alphabetContainerRef = useRef()
+
+    const [activeLetter, setActiveLetter] = useState(undefined)
+    const [activeLetterViewTop, setActiveLetterViewTop] = useState(0)
+
+    let containerTop
+    let containerHeight
+
+    const panResponder = useRef(
+        PanResponder.create({
+            onStartShouldSetPanResponder: () => true,
+            onStartShouldSetPanResponderCapture: () => true,
+            onMoveShouldSetPanResponder: () => true,
+            onMoveShouldSetPanResponderCapture: () => true,
+            onPanResponderTerminationRequest: () => true, 
+            onShouldBlockNativeResponder: () => true,
+            onPanResponderGrant: debounce(onPanResponderGrant),
+            onPanResponderMove: debounce(onPanResponderMove),
+            onPanResponderTerminate: onPanResponderTerminate,
+            onPanResponderRelease: onPanResponderTerminate,
+        })
+    ).current
+
+    function getTouchedLetter (y) {
+        const top = y - (containerTop || 0) - 5
+
+        if (top >= 1 && top <= containerHeight) {
+            setActiveLetterViewTop(top)
+
+            return ALPHABET[Math.round((top / containerHeight) * ALPHABET.length)]
+        }
+    }
+
+    function onPanResponderGrant (event, gestureState) {
+        const letter = getTouchedLetter(gestureState.y0)
+
+        onTouchLetter(letter)
+    }
+
+    function onPanResponderMove (event, gestureState) {
+        const letter = getTouchedLetter(gestureState.moveY)
+
+        onTouchLetter(letter)
+    }
+
+    function onTouchLetter (letter) {
+        setActiveLetter(letter)
+        
+        onScroll(letter, activeLetterViewTop)
+    }
+
+    function onPanResponderTerminate () {
+        setActiveLetter(undefined)
+
+        onScrollEnds()
+    }
+
+    function onLayout () {
+        if (alphabetContainerRef && alphabetContainerRef.current) {
+            alphabetContainerRef.current.measure((width, x1, y1, height, px, py) => {
+                if (!containerTop && !containerHeight) {
+                    containerTop = py
+                    containerHeight = height
+                }
+            })
+        }
+    }
+
+    return (
+        <View
+            ref={alphabetContainerRef}
+            {...panResponder.panHandlers}
+            onLayout={onLayout}
+            style={[styles.container]}
+        >
+            {
+                ALPHABET.map((letter) => (
+                    <View key={letter}>
+                        <Text
+                            style={{
+                                fontSize: ResponsiveFontSize(1.6), 
+                            }}
+                        >
+                            {letter}
+                        </Text>
+                    </View>
+                ))
+            }
+        </View>
+    )
+}
+
+AlphabeticScrollBar.propTypes = {
+    onScroll: PropTypes.func,
+    onScrollEnds: PropTypes.func,
+    activeColor: PropTypes.string,
+    reverse: PropTypes.bool,
+    isPortrait: PropTypes.bool,
+    fontColor: PropTypes.string,
+    fontSizeMultiplier: PropTypes.number,
+    scrollBarContainerStyle: PropTypes.object
+};
+
+AlphabeticScrollBar.propTypes = {
+    onScroll: () => {},
+    onScrollEnds: () => {}
+};
+
+export default AlphabeticScrollBar;

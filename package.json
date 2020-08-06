@@ -19,10 +19,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bardog/Alpha-scroll-flat-list.git"
+    "url": "git+https://github.com/yoovanr/react-native-alpha-flat-list.git"
   },
   "bugs": {
-    "url": "https://github.com/bardog/Alpha-scroll-flat-list/issues"
+    "url": "https://github.com/yoovanr/react-native-alpha-flat-list/issues"
   },
   "dependencies": {
     "lodash": "^4.16.6",

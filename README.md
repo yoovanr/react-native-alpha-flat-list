@@ -1,5 +1,7 @@
 # React Native Alpha Flat List
 
+A simple and fully customizable React Native component that implements Alphabetical List
+
 ## Getting Started
 
 ```

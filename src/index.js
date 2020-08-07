@@ -41,7 +41,11 @@ export default function AlphaFlatList (props) {
     }
 
     function onViewableItemsChanged ({ viewableItems }) {
-        setActiveLetter(viewableItems[0].item[props.scrollKey].toUpperCase().charAt(0))
+        if (viewableItems && viewableItems.length) {
+            const letter = viewableItems[0].item[props.scrollKey].toUpperCase().charAt(0)
+
+            setActiveLetter(letter)
+        }
     }
 
     return (

@@ -44,7 +44,7 @@ export default function AlphaFlatList (props) {
     let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
     if (props.displayOnlyAvailableLetters) {
-        letters = items.map(item => item[props.scrollKey].charAt(0))
+        letters = props.data.map(item => item[props.scrollKey].charAt(0))
     }
 
     return (

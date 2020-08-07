@@ -8,8 +8,6 @@ import ResponsiveFontSize from 'react-native-responsive-fontsize'
 
 import styles from './Sidebar.styles'
 
-const ALPHABET = '#ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-
 function AlphabeticScrollBar (props) {
     const alphabetContainerRef = useRef()
 
@@ -40,7 +38,7 @@ function AlphabeticScrollBar (props) {
         if (top >= 1 && top <= containerHeight) {
             setActiveLetterViewTop(top)
 
-            return ALPHABET[Math.round((top / containerHeight) * ALPHABET.length)]
+            return letters[Math.round((top / containerHeight) * letters.length)]
         }
     }
 
@@ -87,7 +85,7 @@ function AlphabeticScrollBar (props) {
             style={[styles.container, props.sidebarContainerStyle]}
         >
             {
-                ALPHABET.map((letter) => (
+                letters.map((letter) => (
                     <View
                         key={letter}
                         style={[props.sidebarLetterContainerStyle]}

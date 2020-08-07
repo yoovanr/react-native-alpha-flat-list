@@ -41,6 +41,12 @@ export default function AlphaFlatList (props) {
         setActiveLetterViewTop(undefined)
     }
 
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+    if (props.displayOnlyAvailableLetters) {
+        letters = items.map(item => item[props.scrollKey].charAt(0))
+    }
+
     return (
         <View style={[props.containerStyle]}> 
             <FlatList
@@ -50,6 +56,7 @@ export default function AlphaFlatList (props) {
             />
 
             <Sidebar
+                letters={letters}
                 onScroll={debounce(onScroll)}
                 onScrollEnds={debounce(onScrollEnds)}
                 sidebarContainerStyle={props.sidebarContainerStyle}
@@ -65,6 +72,7 @@ AlphaFlatList.propTypes = {
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
     listStyle: PropTypes.object,
+    displayOnlyAvailableLetters: PropTypes.bool,
     containerStyle: PropTypes.object,
     sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,

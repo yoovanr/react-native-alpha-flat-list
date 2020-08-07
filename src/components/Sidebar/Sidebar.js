@@ -8,14 +8,14 @@ import ResponsiveFontSize from 'react-native-responsive-fontsize'
 
 import styles from './Sidebar.styles'
 
+let containerTop
+let containerHeight
+
 function AlphabeticScrollBar (props) {
     const alphabetContainerRef = useRef()
 
     const [activeLetter, setActiveLetter] = useState(undefined)
     const [activeLetterViewTop, setActiveLetterViewTop] = useState(0)
-
-    let containerTop
-    let containerHeight
 
     const panResponder = useRef(
         PanResponder.create({
@@ -33,12 +33,22 @@ function AlphabeticScrollBar (props) {
     ).current
 
     function getTouchedLetter (y) {
-        const top = y - (containerTop || 0) - 5
+        const top = y - (containerTop || 0)
 
         if (top >= 1 && top <= containerHeight) {
             setActiveLetterViewTop(top)
 
-            return props.letters[Math.round((top / containerHeight) * props.letters.length)]
+            const lettersRanges = props.letters.map((letter, index) => {
+                return {
+                    letter: letter,
+                    start: index * containerHeight / props.letters.length,
+                    end: (index + 1) * containerHeight / props.letters.length
+                }
+            })
+
+            const index = lettersRanges.findIndex((letter) => letter.start <= top && top <= letter.end)
+
+            return props.letters[index]
         }
     }
 

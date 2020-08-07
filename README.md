@@ -14,6 +14,10 @@ or
 $ npm install --save react-native-alpha-flat-list
 ```
 
+## Example
+
+![](https://im.ezgif.com/tmp/ezgif-1-85aad49db83d.gif)
+
 ## Usage
 
 Import the `AlphaFlatList` component from `react-native-alpha-flat-list` and use it like so:

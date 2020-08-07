@@ -41,7 +41,7 @@ const data = items.sort((previous, next) => previous.name.localeCompare(next.nam
 
 export default function App () {
     const renderItem = ({ item }) => (
-        <View style={{ height: ITEM_HEIGHT }}>
+        <View style={{ height: ITEM_HEIGHT, paddingLeft: 20, }}>
             <Text>{item.name}</Text>
         </View>
     )
@@ -56,7 +56,9 @@ export default function App () {
                 keyExtractor={keyExtractor}
                 renderItem={renderItem}
                 itemHeight={ITEM_HEIGHT}
-                displayOnlyAvailableLetters
+                listStyle={{ paddingLeft: 10 }}
+                sidebarLetterStyle={{ fontWeight: 'bold' }}
+                sidebarLetterActiveStyle={{ color: 'red' }}
             />
         </SafeAreaView>
     )

@@ -11,11 +11,10 @@ import styles from './Sidebar.styles'
 let containerTop
 let containerHeight
 
-function AlphabeticScrollBar (props) {
+function Sidebar (props) {
     const alphabetContainerRef = useRef()
 
     const [activeLetter, setActiveLetter] = useState(undefined)
-    const [activeLetterViewTop, setActiveLetterViewTop] = useState(0)
 
     const panResponder = useRef(
         PanResponder.create({
@@ -23,8 +22,6 @@ function AlphabeticScrollBar (props) {
             onMoveShouldSetPanResponder: () => true,
             onPanResponderGrant: debounce(onPanResponderGrant),
             onPanResponderMove: debounce(onPanResponderMove),
-            onPanResponderTerminate: onPanResponderTerminate,
-            onPanResponderRelease: onPanResponderTerminate,
         })
     ).current
 
@@ -32,8 +29,6 @@ function AlphabeticScrollBar (props) {
         const top = y - (containerTop || 0)
 
         if (top >= 1 && top <= containerHeight) {
-            setActiveLetterViewTop(top)
-
             const lettersRanges = props.letters.map((letter, index) => {
                 return {
                     letter: letter,
@@ -63,11 +58,7 @@ function AlphabeticScrollBar (props) {
     function onTouchLetter (letter) {
         setActiveLetter(letter)
         
-        props.onScroll(letter, activeLetterViewTop)
-    }
-
-    function onPanResponderTerminate () {
-        props.onScrollEnds()
+        props.onScroll(letter)
     }
 
     function onLayout () {
@@ -86,7 +77,10 @@ function AlphabeticScrollBar (props) {
             ref={alphabetContainerRef}
             {...panResponder.panHandlers}
             onLayout={onLayout}
-            style={[styles.container, props.sidebarContainerStyle]}
+            style={[
+                styles.container, 
+                props.sidebarContainerStyle,
+            ]}
         >
             {
                 props.letters.map((letter) => (
@@ -94,14 +88,14 @@ function AlphabeticScrollBar (props) {
                         key={letter}
                         style={[
                             props.sidebarLetterContainerStyle,
-                            activeLetter === letter && props.sidebarLetterContainerActiveStyle
+                            activeLetter === letter && props.sidebarLetterContainerActiveStyle,
                         ]}
                     >
                         <Text
                             style={[
                                 { fontSize: ResponsiveFontSize(1.6) },
                                 props.sidebarLetterStyle, 
-                                activeLetter === letter && props.sidebarLetterActiveStyle
+                                activeLetter === letter && props.sidebarLetterActiveStyle,
                             ]}
                         >
                             {letter}
@@ -113,9 +107,8 @@ function AlphabeticScrollBar (props) {
     )
 }
 
-AlphabeticScrollBar.propTypes = {
+Sidebar.propTypes = {
     onScroll: PropTypes.func,
-    onScrollEnds: PropTypes.func,
     sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,
     sidebarLetterContainerActiveStyle: PropTypes.object,
@@ -123,4 +116,4 @@ AlphabeticScrollBar.propTypes = {
     sidebarLetterActiveStyle: PropTypes.object,
 }
 
-export default AlphabeticScrollBar
+export default Sidebar

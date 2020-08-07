@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { FlatList, View } from 'react-native'
 
 import PropTypes from 'prop-types'
@@ -7,19 +7,11 @@ import debounce from 'lodash.debounce'
 import Sidebar from './components/Sidebar'
 
 export default function AlphaFlatList (props) {
-    const [activeLetter, setActiveLetter] = useState(0)
-    const [activeLetterViewTop, setActiveLetterViewTop] = useState(undefined)
-
     const flatListRef = useRef()
 
-    function onScroll (activeLetter, activeLetterViewTop) {
+    function onScroll (activeLetter) {
         if (activeLetter) {
-            let index
-
-            setActiveLetter(activeLetter)
-            setActiveLetterViewTop(activeLetterViewTop)
-
-            index = props.data.findIndex(item => item[props.scrollKey].toUpperCase().charAt(0).localeCompare(activeLetter) === 0)
+            let index = props.data.findIndex(item => item[props.scrollKey].toUpperCase().charAt(0).localeCompare(activeLetter) === 0)
 
             if (index !== -1) {
                 const options = {
@@ -30,11 +22,6 @@ export default function AlphaFlatList (props) {
                 flatListRef.current.scrollToOffset(options)
             }
         }
-    }
-
-    function onScrollEnds () {
-        setActiveLetter(0)
-        setActiveLetterViewTop(undefined)
     }
 
     let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
@@ -54,7 +41,6 @@ export default function AlphaFlatList (props) {
             <Sidebar
                 letters={letters}
                 onScroll={debounce(onScroll)}
-                onScrollEnds={debounce(onScrollEnds)}
                 sidebarContainerStyle={props.sidebarContainerStyle}
                 sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
                 sidebarLetterContainerActiveStyle={props.sidebarLetterContainerActiveStyle}

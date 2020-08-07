@@ -42,7 +42,7 @@ export default function AlphaFlatList (props) {
     }
 
     return (
-        <View> 
+        <View style={[props.containerStyle]}> 
             <FlatList
                 {...props}
                 ref={flatListRef}
@@ -65,6 +65,7 @@ AlphaFlatList.propTypes = {
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
     listStyle: PropTypes.object,
+    containerStyle: PropTypes.object,
     sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,
     sidebarLetterStyle: PropTypes.object,

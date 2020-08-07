@@ -1,6 +1,6 @@
 {
     "name": "react-native-alpha-flat-list",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "A simple and fully customizable React Native component that implements Alphabetical List",
     "main": "src/index.js",
     "scripts": {

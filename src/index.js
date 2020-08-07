@@ -57,7 +57,9 @@ export default function AlphaFlatList (props) {
                 onScrollEnds={debounce(onScrollEnds)}
                 sidebarContainerStyle={props.sidebarContainerStyle}
                 sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
+                sidebarLetterContainerActiveStyle={props.sidebarLetterContainerActiveStyle}
                 sidebarLetterStyle={props.sidebarLetterStyle}
+                sidebarLetterActiveStyle={props.sidebarLetterActiveStyle}
             />
         </View>
     )

@@ -19,11 +19,7 @@ export default function AlphaFlatList (props) {
             setActiveLetter(activeLetter)
             setActiveLetterViewTop(activeLetterViewTop)
 
-            if (activeLetter === '#') {
-                index = 0
-            } else {
-                index = props.data.findIndex(item => item[props.scrollKey].charAt(0).localeCompare(activeLetter) === 0)
-            }
+            index = props.data.findIndex(item => item[props.scrollKey].toUpperCase().charAt(0).localeCompare(activeLetter) === 0)
 
             if (index !== -1) {
                 const options = {
@@ -44,7 +40,7 @@ export default function AlphaFlatList (props) {
     let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
     if (props.displayOnlyAvailableLetters) {
-        letters = [...new Set(props.data.map(item => item[props.scrollKey].charAt(0)))]
+        letters = [...new Set(props.data.map(item => item[props.scrollKey].toUpperCase().charAt(0)))]
     }
 
     return (

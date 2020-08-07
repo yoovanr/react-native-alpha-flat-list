@@ -20,74 +20,18 @@ Import the `AlphaFlatList` component from `react-native-alpha-flat-list` and use
 
 ```jsx
 import React from 'react'
-import { View, Text } from 'react-native'
+import { SafeAreaView, View, Text } from 'react-native'
 
 import AlphaFlatList from 'react-native-alpha-flat-list'
 
-const ITEM_HEIGHT = 250
+const ITEM_HEIGHT = 20
 
-const items = [
-    {
-        'id': '5b588d4acb1fe7c48301af77',
-        'name': 'Iris Maddox',
-        'company': 'COLAIRE',
-    },
-    {
-        'id': '5b588d4a19428267ed675c5e',
-        'name': 'Fuentes Schmidt',
-        'company': 'APEXTRI',
-    },
-    {
-        'id': '5b588d4a7e7b0b916259c3f0',
-        'name': 'Jane Small',
-        'company': 'DUOFLEX',
-    },
-    {
-        'id': '5b588d4a478f8056d34b794c',
-        'name': 'Dotson Ortiz',
-        'company': 'CYTREX',
-    },
-    {
-        'id': '5b588d4a14ed168a2673c902',
-        'name': 'Hall Nguyen',
-        'company': 'ENTROFLEX',
-    },
-    {
-        'id': '5b588d4a7549063dbb46df0b',
-        'name': 'Estrada Armstrong',
-        'company': 'BOILICON',
-    },
-    {
-        'id': '5b588d4aa564689268c5472a',
-        'name': 'Josie Harmon',
-        'company': 'RODEMCO',
-    },
-    {
-        'id': '5b588d4a00f614c7ae794fd3',
-        'name': 'Sondra Stevenson',
-        'company': 'OHMNET',
-    },
-    {
-        'id': '5b588d4a69a2745fe601a688',
-        'name': 'Booker Trevino',
-        'company': 'OCEANICA',
-    },
-    {
-        'id': '5b588d4a22d9a7800b157b0e',
-        'name': 'Lilly Luna',
-        'company': 'INCUBUS',
-    },
-    {
-        'id': '5b588d4a04251caba4c9fb97',
-        'name': 'Bird Landry',
-        'company': 'ELECTONIC',
-    },
-    {
-        'id': '5b588d4a7192ff64019d9c40',
-        'name': 'Rasmussen Berry',
-        'company': 'PHOLIO',
-    },
-]
+const items = Array.from({ length: 500 }, () => {
+    return {
+        id: '_' + Math.random().toString(36).substr(2, 9),
+        name: Math.random().toString(36).substring(7).replace(/[0-9]/g, '')
+    }
+})
 
 const data = items.sort((previous, next) => previous.name.localeCompare(next.name))
 
@@ -95,21 +39,22 @@ export default function App () {
     const renderItem = ({ item }) => (
         <View style={{ height: ITEM_HEIGHT }}>
             <Text>{item.name}</Text>
-            <Text>{item.company}</Text>
         </View>
     )
 
     const keyExtractor = ({ id }) => id
 
     return (
-        <View style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1 }}>
             <AlphaFlatList
                 data={data}
+                initialNumToRender={data.length}
                 keyExtractor={keyExtractor}
                 renderItem={renderItem}
                 itemHeight={ITEM_HEIGHT}
+                displayOnlyAvailableLetters
             />
-        </View>
+        </SafeAreaView>
     )
 }
 ```

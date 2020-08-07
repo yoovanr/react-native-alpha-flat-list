@@ -20,11 +20,7 @@ function AlphabeticScrollBar (props) {
     const panResponder = useRef(
         PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onStartShouldSetPanResponderCapture: () => true,
             onMoveShouldSetPanResponder: () => true,
-            onMoveShouldSetPanResponderCapture: () => true,
-            onPanResponderTerminationRequest: () => true, 
-            onShouldBlockNativeResponder: () => true,
             onPanResponderGrant: debounce(onPanResponderGrant),
             onPanResponderMove: debounce(onPanResponderMove),
             onPanResponderTerminate: onPanResponderTerminate,
@@ -71,8 +67,6 @@ function AlphabeticScrollBar (props) {
     }
 
     function onPanResponderTerminate () {
-        setActiveLetter(undefined)
-
         props.onScrollEnds()
     }
 

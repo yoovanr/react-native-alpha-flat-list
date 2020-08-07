@@ -14,7 +14,7 @@ let containerHeight
 function Sidebar (props) {
     const alphabetContainerRef = useRef()
 
-    const [activeLetter, setActiveLetter] = useState(undefined)
+    // const [activeLetter, setActiveLetter] = useState(undefined)
 
     const panResponder = useRef(
         PanResponder.create({
@@ -56,8 +56,6 @@ function Sidebar (props) {
     }
 
     function onTouchLetter (letter) {
-        setActiveLetter(letter)
-        
         props.onScroll(letter)
     }
 
@@ -88,14 +86,14 @@ function Sidebar (props) {
                         key={letter}
                         style={[
                             props.sidebarLetterContainerStyle,
-                            activeLetter === letter && props.sidebarLetterContainerActiveStyle,
+                            props.activeLetter === letter && props.sidebarLetterContainerActiveStyle,
                         ]}
                     >
                         <Text
                             style={[
                                 { fontSize: ResponsiveFontSize(1.6) },
                                 props.sidebarLetterStyle, 
-                                activeLetter === letter && props.sidebarLetterActiveStyle,
+                                props.activeLetter === letter && props.sidebarLetterActiveStyle,
                             ]}
                         >
                             {letter}

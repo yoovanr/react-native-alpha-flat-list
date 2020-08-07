@@ -55,7 +55,7 @@ export default function AlphaFlatList (props) {
             />
 
             {
-                !!props.hideSideBar && (
+                !props.hideSidebar && (
                     <Sidebar
                         activeLetter={activeLetter}
                         letters={letters}
@@ -76,7 +76,7 @@ AlphaFlatList.propTypes = {
     data: PropTypes.array,
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
-    hideSideBar: PropTypes.bool,
+    hideSidebar: PropTypes.bool,
     displayOnlyAvailableLetters: PropTypes.bool,
     listStyle: PropTypes.object,
     containerStyle: PropTypes.object,
@@ -90,5 +90,5 @@ AlphaFlatList.propTypes = {
 AlphaFlatList.defaultProps = {
     scrollKey: 'name',
     itemHeight: 20,
-    hideSideBar: false,
+    hideSidebar: false,
 }

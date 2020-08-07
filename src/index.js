@@ -55,7 +55,7 @@ export default function AlphaFlatList (props) {
             />
 
             {
-                !!hideSideBar && (
+                !!props.hideSideBar && (
                     <Sidebar
                         activeLetter={activeLetter}
                         letters={letters}

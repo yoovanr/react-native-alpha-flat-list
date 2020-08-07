@@ -72,7 +72,9 @@ AlphaFlatList.propTypes = {
     containerStyle: PropTypes.object,
     sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,
+    sidebarLetterContainerActiveStyle: PropTypes.object,
     sidebarLetterStyle: PropTypes.object,
+    sidebarLetterActiveStyle: PropTypes.object,
 }
 
 AlphaFlatList.defaultProps = {

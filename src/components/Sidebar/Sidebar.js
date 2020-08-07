@@ -38,7 +38,7 @@ function AlphabeticScrollBar (props) {
         if (top >= 1 && top <= containerHeight) {
             setActiveLetterViewTop(top)
 
-            return letters[Math.round((top / containerHeight) * letters.length)]
+            return props.letters[Math.round((top / containerHeight) * props.letters.length)]
         }
     }
 
@@ -85,7 +85,7 @@ function AlphabeticScrollBar (props) {
             style={[styles.container, props.sidebarContainerStyle]}
         >
             {
-                letters.map((letter) => (
+                props.letters.map((letter) => (
                     <View
                         key={letter}
                         style={[props.sidebarLetterContainerStyle]}

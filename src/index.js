@@ -54,16 +54,20 @@ export default function AlphaFlatList (props) {
                 viewabilityConfig={viewabilityConfigRef.current}
             />
 
-            <Sidebar
-                activeLetter={activeLetter}
-                letters={letters}
-                onScroll={debounce(onScroll)}
-                sidebarContainerStyle={props.sidebarContainerStyle}
-                sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
-                sidebarLetterContainerActiveStyle={props.sidebarLetterContainerActiveStyle}
-                sidebarLetterStyle={props.sidebarLetterStyle}
-                sidebarLetterActiveStyle={props.sidebarLetterActiveStyle}
-            />
+            {
+                !!hideSideBar && (
+                    <Sidebar
+                        activeLetter={activeLetter}
+                        letters={letters}
+                        onScroll={debounce(onScroll)}
+                        sidebarContainerStyle={props.sidebarContainerStyle}
+                        sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
+                        sidebarLetterContainerActiveStyle={props.sidebarLetterContainerActiveStyle}
+                        sidebarLetterStyle={props.sidebarLetterStyle}
+                        sidebarLetterActiveStyle={props.sidebarLetterActiveStyle}
+                    />
+                )
+            }
         </View>
     )
 }
@@ -72,8 +76,9 @@ AlphaFlatList.propTypes = {
     data: PropTypes.array,
     scrollKey: PropTypes.string,
     itemHeight: PropTypes.number,
-    listStyle: PropTypes.object,
+    hideSideBar: PropTypes.bool,
     displayOnlyAvailableLetters: PropTypes.bool,
+    listStyle: PropTypes.object,
     containerStyle: PropTypes.object,
     sidebarContainerStyle: PropTypes.object,
     sidebarLetterContainerStyle: PropTypes.object,
@@ -85,4 +90,5 @@ AlphaFlatList.propTypes = {
 AlphaFlatList.defaultProps = {
     scrollKey: 'name',
     itemHeight: 20,
+    hideSideBar: false,
 }

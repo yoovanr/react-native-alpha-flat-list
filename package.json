@@ -1,5 +1,5 @@
 {
-    "name": "react-native-alpha-flat-list",
+    "name": "@yoovanr/react-native-alpha-flat-list",
     "version": "0.0.23",
     "description": "A simple and fully customizable React Native component that implements Alphabetical List",
     "main": "src/index.js",
@@ -44,6 +44,6 @@
         "metro-react-native-babel-preset": "^0.61.0"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
+        "registry": "https://npm.pkg.github.com/yoovanr"
     }
 }

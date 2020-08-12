@@ -16,7 +16,7 @@ $ npm install --save react-native-alpha-flat-list
 
 ## Example
 
-![](https://im.ezgif.com/tmp/ezgif-1-85aad49db83d.gif)
+![](https://i.ibb.co/jZgY6Mp/ezgif-1-85aad49db83d.gif)
 
 ## Usage
 

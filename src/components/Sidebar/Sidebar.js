@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { View, Text, PanResponder } from 'react-native'
 
 import PropTypes from 'prop-types'
@@ -13,8 +13,6 @@ let containerHeight
 
 function Sidebar (props) {
     const alphabetContainerRef = useRef()
-
-    // const [activeLetter, setActiveLetter] = useState(undefined)
 
     const panResponder = useRef(
         PanResponder.create({
